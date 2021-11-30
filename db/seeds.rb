@@ -6,12 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Favorite.destroy_all
+Review.destroy_all
+Toilet.destroy_all
+User.destroy_all
+
 #admin
+puts "creating the admin"
 email = "system@wepoop.com"
 password = "something"
 admin = User.create(email: email, password: password)
 
 #users
+puts "creating users..."
 5.times do |i|
   email = "user#{i}@wepoop.com"
   password = "something"
@@ -19,6 +26,7 @@ admin = User.create(email: email, password: password)
 end
 
 #toilets
+puts "creating toilets..."
 Toilet.create(
   address: "1515 Anyi Road",
   longitude: 121.4452639,
@@ -88,6 +96,7 @@ Toilet.create(
   user: admin
 )
 
+puts "creating favorites and reviews..."
 User.all.each do |user|
   toilets = Toilet.all
   3.times do
