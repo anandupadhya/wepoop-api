@@ -5,19 +5,24 @@ class Api::V1::UserSessionsController < Devise::SessionsController
   def create
     user = get_user
     token = Tiddle.create_and_return_token(user, request) # generate the token for API authentication
-    render json: {
-      user: user,
-      headers: {
-        "X-USER-EMAIL"=> user.email,
-        "X-USER-TOKEN"=> token
+    if user.nil?
+      raise "No such user.git checkout -b new-git-branch"
+    else
+      render json: {
+        user: user,
+        headers: {
+          "X-USER-EMAIL"=> user.email,
+          "X-USER-TOKEN"=> token
+        }
       }
-    }
+    end
   end
 
   private
 
   def get_user
     open_id = fetch_wx_open_id(params[:code])["openid"]
+    return nil unless open_id.present?
     user = User.find_by(open_id: open_id)
 
     if user.blank?
