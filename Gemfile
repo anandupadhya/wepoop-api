@@ -35,6 +35,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'rest-client'
 gem 'tiddle'
+gem 'geocoder'
 
 
 group :development, :test do  gem 'pry-byebug'
