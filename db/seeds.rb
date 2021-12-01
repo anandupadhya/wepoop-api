@@ -97,6 +97,140 @@ Toilet.create(
   user: admin
 )
 
+##############NEW TOILETS########
+
+Toilet.create(
+  address: "68 Yuyuan Rd.",
+  longitude: 121.4418747,
+  latitude: 31.22754,
+  accessibility: true,
+  changing_station: true,
+  directions: "Walk 25 meters after yuyuan entrance. Next to Nike store",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Crystal Galleria",
+  user: admin
+)
+Toilet.create(
+  address: "849 Jiangsu Rd.",
+  longitude: 121.4230354,
+  latitude: 31.2260517,
+  accessibility: true,
+  changing_station: true,
+  directions: "The toilet is on the street",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Public Toilet",
+  user: admin
+)
+Toilet.create(
+  address: "55 Fahuazhen Rd.",
+  longitude: 121.4146226,
+  latitude: 31.2094065,
+  accessibility: false,
+  changing_station: false,
+  directions: "This toilet is on the street",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Public Toilet",
+  user: admin
+)
+Toilet.create(
+  address: "102 Yixueyuan Rd.",
+  longitude: 121.4521243,
+  latitude: 31.2016601,
+  accessibility: false,
+  changing_station: false,
+  directions: "This toilet is on the street",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Public Toilet",
+  user: admin
+)
+Toilet.create(
+  address: "2 Guangyuan Rd.",
+  longitude: 121.4359733,
+  latitude: 31.2012256,
+  accessibility: false,
+  changing_station: false,
+  directions: "This toilet is on the street",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Public Toilet",
+  user: admin
+)
+Toilet.create(
+  address: "43 Tianping Rd.",
+  longitude: 121.44709,
+  latitude: 31.19594,
+  accessibility: false,
+  changing_station: false,
+  directions: "This toilet is on the street",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Public Toilet",
+  user: admin
+)
+Toilet.create(
+  address: "148 South Wulumuqi Rd.",
+  longitude: 121.44789,
+  latitude: 31.19606,
+  accessibility: false,
+  changing_station: false,
+  directions: "This toilet is on the street",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Public Toilet",
+  user: admin
+)
+Toilet.create(
+  address: "221 Yueyang Rd.",
+  longitude: 121.4478442,
+  latitude: 31.2074908,
+  accessibility: false,
+  changing_station: false,
+  directions: "This toilet is on the street",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Public Toilet",
+  user: admin
+)
+Toilet.create(
+  address: "195 Anfu Rd",
+  longitude: 121.4389529,
+  latitude: 31.2157395,
+  accessibility: false,
+  changing_station: false,
+  directions: "Left side of the end of the store",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Baker & Spice",
+  user: admin
+)
+Toilet.create(
+  address: "1266 West Nanjing Rd.",
+  longitude: 121.45323009478852,
+  latitude: 31.229495011288456,
+  accessibility: true,
+  changing_station: true,
+  directions: "First floor next to Starbucks Coffee",
+  male: true,
+  female: true,
+  approved: true,
+  description: "Plaza 66",
+  user: admin
+)
+###################
+
 puts "creating favorites and reviews..."
 User.all.each do |user|
   toilets = Toilet.all
