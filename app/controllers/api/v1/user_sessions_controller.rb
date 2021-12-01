@@ -6,7 +6,7 @@ class Api::V1::UserSessionsController < Devise::SessionsController
     user = get_user
     token = Tiddle.create_and_return_token(user, request) # generate the token for API authentication
     if user.nil?
-      raise "No such user.git checkout -b new-git-branch"
+      raise "No such user."
     else
       render json: {
         user: user,
@@ -16,6 +16,19 @@ class Api::V1::UserSessionsController < Devise::SessionsController
         }
       }
     end
+  end
+
+  def manual_login
+    user = User.first
+    token = Tiddle.create_and_return_token(user, request)
+    render json: {
+        user: user,
+        headers: {
+          "X-USER-EMAIL"=> user.email,
+          "X-USER-TOKEN"=> token
+        }
+      }
+
   end
 
   private
