@@ -51,8 +51,8 @@ class Api::V1::UserSessionsController < Devise::SessionsController
 
   def fetch_wx_open_id(code)
     # change accordingly if you're using ENV variables instead
-    app_id = ENV['WECHAT_APP_ID']
-    app_secret = ENV['WECHAT_APP_SECRET']
+    app_id = Rails.application.credentials.dig(:wechat, :app_id) # ENV['WECHAT_APP_ID']
+    app_secret = Rails.application.credentials.dig(:wechat, :app_secret) # ENV['WECHAT_APP_SECRET']
     url = "https://api.weixin.qq.com/sns/jscode2session?appid=#{app_id}&secret=#{app_secret}&js_code=#{code}&grant_type=authorization_code"
     response = RestClient.get(url)
     JSON.parse(response.body)

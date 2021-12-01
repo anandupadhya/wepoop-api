@@ -37,6 +37,7 @@ gem 'simple_form'
 gem 'rest-client'
 gem 'tiddle'
 gem 'geocoder'
+gem 'rails_admin', '~> 2.0'
 
 
 group :development, :test do  gem 'pry-byebug'
