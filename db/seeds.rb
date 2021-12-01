@@ -9,13 +9,14 @@
 Favorite.destroy_all
 Review.destroy_all
 Toilet.destroy_all
+AuthenticationToken.destroy_all
 User.destroy_all
 
 #admin
 puts "creating the admin"
-email = "system@wepoop.com"
+email = "g"
 password = "something"
-admin = User.create(email: email, password: password)
+admin = User.create(email: email, password: password, admin: true)
 
 #users
 puts "creating users..."
