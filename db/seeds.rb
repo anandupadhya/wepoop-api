@@ -12,13 +12,13 @@ Toilet.destroy_all
 AuthenticationToken.destroy_all
 User.destroy_all
 
-#admin
+# admin
 puts "creating the admin"
-email = "g"
+email = "wepoop@system.com"
 password = "something"
 admin = User.create(email: email, password: password, admin: true)
 
-#users
+# users
 puts "creating users..."
 5.times do |i|
   email = "user#{i}@wepoop.com"
@@ -26,12 +26,13 @@ puts "creating users..."
   User.create(email: email, password: password)
 end
 
-#toilets
+# toilets
 puts "creating toilets..."
+
 Toilet.create(
   address: "1515 Anyi Road",
-  longitude: 121.4452639,
-  latitude: 31.2247847,
+  longitude: 121.44526,
+  latitude: 31.22478,
   accessibility: true,
   changing_station: true,
   directions: "Fifth floor next to the MickeyD's",
@@ -44,8 +45,8 @@ Toilet.create(
 
 Toilet.create(
   address: "Huashan Road, 200031",
-  longitude: 121.434841,
-  latitude: 31.218192,
+  longitude: 121.43484,
+  latitude: 31.21819,
   accessibility: false,
   changing_station: false,
   directions: "When you enter the store go directly to the end and turn left.",
@@ -55,10 +56,11 @@ Toilet.create(
   description: "Coffee Pls",
   user: admin
 )
+
 Toilet.create(
   address: "Middle Yan'an",
-  longitude: 121.44808028800783,
-  latitude: 31.22370875630693,
+  longitude: 121.44808,
+  latitude: 31.22370,
   accessibility: true,
   changing_station: true,
   directions: "Try third floor if first floor is full.",
@@ -71,8 +73,8 @@ Toilet.create(
 
 Toilet.create(
   address: "155 Middle Wulumuqi Road",
-  longitude: 121.43880018212404,
-  latitude: 31.21989524570796,
+  longitude: 121.43880,
+  latitude: 31.21989,
   accessibility: false,
   changing_station: false,
   directions: "3rd floor next to the ballroom",
@@ -85,8 +87,8 @@ Toilet.create(
 
 Toilet.create(
   address: "105 Middle Wulumuqi Road, Jing'an District, China",
-  longitude: 121.439142,
-  latitude: 31.221368,
+  longitude: 121.43914,
+  latitude: 31.22136,
   accessibility: false,
   changing_station: false,
   directions: "Take the elevator to the 9th floor, knock on the door, and pretend you are a student who last her key card. For the men's restrooom, turn right. For women's, turn left.",
@@ -101,7 +103,7 @@ Toilet.create(
 
 Toilet.create(
   address: "68 Yuyuan Rd.",
-  longitude: 121.4418747,
+  longitude: 121.44187,
   latitude: 31.22754,
   accessibility: true,
   changing_station: true,
@@ -114,8 +116,8 @@ Toilet.create(
 )
 Toilet.create(
   address: "849 Jiangsu Rd.",
-  longitude: 121.4230354,
-  latitude: 31.2260517,
+  longitude: 121.42303,
+  latitude: 31.22605,
   accessibility: true,
   changing_station: true,
   directions: "The toilet is on the street",
@@ -127,8 +129,8 @@ Toilet.create(
 )
 Toilet.create(
   address: "55 Fahuazhen Rd.",
-  longitude: 121.4146226,
-  latitude: 31.2094065,
+  longitude: 121.41462,
+  latitude: 31.20940,
   accessibility: false,
   changing_station: false,
   directions: "This toilet is on the street",
@@ -140,8 +142,8 @@ Toilet.create(
 )
 Toilet.create(
   address: "102 Yixueyuan Rd.",
-  longitude: 121.4521243,
-  latitude: 31.2016601,
+  longitude: 121.45212,
+  latitude: 31.20166,
   accessibility: false,
   changing_station: false,
   directions: "This toilet is on the street",
@@ -153,8 +155,8 @@ Toilet.create(
 )
 Toilet.create(
   address: "2 Guangyuan Rd.",
-  longitude: 121.4359733,
-  latitude: 31.2012256,
+  longitude: 121.43597,
+  latitude: 31.20122,
   accessibility: false,
   changing_station: false,
   directions: "This toilet is on the street",
@@ -192,8 +194,8 @@ Toilet.create(
 )
 Toilet.create(
   address: "221 Yueyang Rd.",
-  longitude: 121.4478442,
-  latitude: 31.2074908,
+  longitude: 121.44784,
+  latitude: 31.20749,
   accessibility: false,
   changing_station: false,
   directions: "This toilet is on the street",
@@ -205,8 +207,8 @@ Toilet.create(
 )
 Toilet.create(
   address: "195 Anfu Rd",
-  longitude: 121.4389529,
-  latitude: 31.2157395,
+  longitude: 121.43895,
+  latitude: 31.21573,
   accessibility: false,
   changing_station: false,
   directions: "Left side of the end of the store",
@@ -218,8 +220,8 @@ Toilet.create(
 )
 Toilet.create(
   address: "1266 West Nanjing Rd.",
-  longitude: 121.45323009478852,
-  latitude: 31.229495011288456,
+  longitude: 121.45323,
+  latitude: 31.22949,
   accessibility: true,
   changing_station: true,
   directions: "First floor next to Starbucks Coffee",
@@ -232,8 +234,8 @@ Toilet.create(
 ###################
 
 puts "creating favorites and reviews..."
+toilets = Toilet.all
 User.all.each do |user|
-  toilets = Toilet.all
   3.times do
     happy = rand(100) > 25
     review = Review.create(user: user, toilet: toilets.sample, happy: happy, status: "approved", comment: nil)

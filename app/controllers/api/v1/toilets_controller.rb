@@ -2,6 +2,7 @@ class Api::V1::ToiletsController < Api::V1::BaseController
   before_action :set_toilet, only: [:show]
   def index
     @toilets = Toilet.near([params["latitude"], params["longitude"]], 2)
+    @toilets.each { |toilet| toilet.distance = (toilet.distance * 1000).round(1) }
   end
 
   def show
