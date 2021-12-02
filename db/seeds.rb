@@ -1,10 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'json'
+require 'open-uri'
 
 Favorite.destroy_all
 Review.destroy_all
@@ -28,6 +23,38 @@ end
 
 # toilets
 puts "creating toilets..."
+
+# lat = 31.214
+# long = 121.435
+
+# 20.times do |x|
+#   20.times do |y|
+#     puts "searching for toilets... square mile #{x}, #{y}"
+#     url = "https://apis.map.qq.com/ws/place/v1/search?page_size=20&keyword=%E5%8E%95%E6%89%80&key=3SFBZ-Y6KKF-OQVJW-JN6UB-S24C6-5HBWQ&boundary=nearby(#{lat + (x / 1000)},#{long + (y / 1000)},1000,1)"
+#     raw_data = URI.open(url).read
+#     toilet_data = JSON.parse(raw_data)["data"]
+#     toilet_ids = []
+
+#     toilet_data.each do |toilet|
+#       next if toilet_ids.include?(toilet["id"])
+
+#       toilet_ids << toilet["id"]
+#       Toilet.create(
+#         address: toilet["address"],
+#         longitude: toilet["location"]["lng"],
+#         latitude: toilet["location"]["lat"],
+#         accessibility: nil,
+#         changing_station: nil,
+#         directions: nil,
+#         male: true,
+#         female: true,
+#         approved: true,
+#         description: toilet["title"],
+#         user: admin
+#       )
+#     end
+#   end
+# end
 
 Toilet.create(
   address: "1515 Anyi Road",
