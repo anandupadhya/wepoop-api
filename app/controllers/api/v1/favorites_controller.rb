@@ -9,4 +9,9 @@ class Api::V1::FavoritesController < Api::V1::BaseController
     @favorite.user_id = current_user.id
     @favorite.save
   end
+
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+  end
 end
