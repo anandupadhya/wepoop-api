@@ -1,5 +1,7 @@
 # app/views/api/v1/toilets/index.json.jbuilder
 json.nearest do
+  json.set! :nearest_happy_reviews, @nearest_happy_reviews
+  json.set! :nearest_unhappy_reviews, @nearest_unhappy_reviews
   json.extract! @toilets[0], :id, :address, :latitude, :longitude, :accessibility, :changing_station, :directions, :male, :female, :approved, :description, :distance
 end
 
