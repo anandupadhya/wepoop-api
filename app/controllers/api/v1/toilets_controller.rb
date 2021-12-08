@@ -2,10 +2,14 @@ class Api::V1::ToiletsController < Api::V1::BaseController
   before_action :set_toilet, only: [:show]
   def index
     @toilets = Toilet.near([params["latitude"], params["longitude"]], 2)
-    @toilets[0].distance = (@toilets[0].distance * 1000).round(1)
+    if @toilets.empty?
+      @toilets = {}
+    else
+      @toilets[0].distance = (@toilets[0].distance * 1000).round(1)
 
-    @nearest_happy_reviews = Review.where(toilet_id: @toilets[0].id, happy: true).count
-    @nearest_unhappy_reviews = Review.where(toilet_id: @toilets[0].id, happy: false).count
+      @nearest_happy_reviews = Review.where(toilet_id: @toilets[0].id, happy: true).count
+      @nearest_unhappy_reviews = Review.where(toilet_id: @toilets[0].id, happy: false).count
+    end
 
     sw_corner = [params["sw_latitude"], params["sw_longitude"]]
     ne_corner = [params["ne_latitude"], params["ne_longitude"]]
@@ -20,6 +24,7 @@ class Api::V1::ToiletsController < Api::V1::BaseController
       @unhappy_reviews << Review.where(toilet_id: toilet.id, happy: false).count
     end
   end
+
 
   def show
   end

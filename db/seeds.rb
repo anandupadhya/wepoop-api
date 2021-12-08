@@ -47,8 +47,10 @@ puts "Cleansing toilets..."
 
 Toilet.all.each do |toilet|
   nearby_toilets = Toilet.near([toilet.latitude, toilet.longitude], 0.01)
-  nearby_toilets.each do |toilet|
-    toilet.destroy
+  nearby_toilets.each do |nearby_toilet|
+    next if nearby_toilet.id == toilet.id
+
+    nearby_toilet.destroy
   end
 end
 
