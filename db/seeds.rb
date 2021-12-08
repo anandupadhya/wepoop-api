@@ -26,8 +26,8 @@ puts "creating toilets..."
 
 raw_data = File.read('./db/tencent_toilets.json')
 toilet_data = JSON.parse(raw_data)
-toilet_data.each do |toilet|
-  puts "creating toilet... ID: #{toilet['id']}"
+toilet_data.each_with_index do |toilet, i|
+  puts "creating toilet...##{i} ID: #{toilet['id']}"
   Toilet.create(
     address: toilet["address"],
     longitude: toilet["location"]["lng"],
