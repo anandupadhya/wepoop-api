@@ -43,6 +43,17 @@ toilet_data.each do |toilet|
   )
 end
 
+puts "Cleansing toilets..."
+
+Toilet.all.each do |toilet|
+  nearby_toilets = Toilet.near([toilet.latitude, toilet.longitude], 0.01)
+  nearby_toilets.each do |nearby_toilet|
+    next if nearby_toilet.id == toilet.id
+
+    nearby_toilet.destroy
+  end
+end
+
 # Toilet.create(
 #   address: "1515 Anyi Road",
 #   longitude: 121.44526,
