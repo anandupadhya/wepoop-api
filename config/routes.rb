@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :users, only: [:show] do
         resources :favorites, only: [:index, :create]
       end
+      resources :favorites, only: [:destroy]
       devise_scope :user do
         post 'login', to: 'user_sessions#create', as: 'login'
         post 'manual_login', to: 'user_sessions#manual_login', as: 'manual_login'
