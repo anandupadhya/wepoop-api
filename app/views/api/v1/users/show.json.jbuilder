@@ -5,6 +5,7 @@ json.reviews current_user.reviews do |review|
   json.date review.created_at.strftime("%m/%d/%y")
 end
 json.favorites current_user.favorites do |favorite|
+  json.set! :description, favorite.toilet.description
   json.extract! favorite, :id, :user_id, :toilet_id
   json.date favorite.created_at.strftime("%m/%d/%y")
 end

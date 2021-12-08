@@ -13,6 +13,7 @@ json.toilets do
     json.set! :distance, @bounded_toilet_distances[i]
     json.set! :happy, @happy_reviews[i]
     json.set! :unhappy, @unhappy_reviews[i]
+    json.set! :isFavorite, @favorites.include?(bounded_toilet.id)
     i += 1
     json.extract! bounded_toilet, :id, :address, :latitude, :longitude, :accessibility, :changing_station, :directions, :male, :female, :approved, :description
   end
