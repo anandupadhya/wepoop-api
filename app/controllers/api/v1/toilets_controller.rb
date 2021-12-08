@@ -9,8 +9,12 @@ class Api::V1::ToiletsController < Api::V1::BaseController
     @bounded_toilets = Toilet.within_bounding_box(sw_corner, ne_corner)
 
     @bounded_toilet_distances = []
+    @happy_reviews = []
+    @unhappy_reviews = []
     @bounded_toilets.each do |toilet|
       @bounded_toilet_distances << Geocoder::Calculations.distance_between([params["latitude"], params["longitude"]], [toilet["latitude"], toilet["longitude"]])
+      @happy_reviews << Review.where(toilet_id: toilet.id, happy: true).count
+      @unhappy_reviews << Review.where(toilet_id: toilet.id, happy: false).count
     end
   end
 
