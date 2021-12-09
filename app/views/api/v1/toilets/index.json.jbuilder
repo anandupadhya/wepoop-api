@@ -5,6 +5,7 @@ json.nearest do
     json.set! :happy, @nearest_happy_reviews
     json.set! :unhappy, @nearest_unhappy_reviews
     json.set! :isFavorite, @favorite_toilet_ids.include?(@toilets[0].id)
+    json.set! :favoriteID, @favorite_toilet_ids.include?(@toilets[0].id) ? Favorite.where(toilet_id: @toilets[0].id).first.id : ''
     json.extract! @toilets[0], :id, :address, :latitude, :longitude, :accessibility, :changing_station, :directions, :male, :female, :approved, :description, :distance
     json.set! :width, 48
     json.set! :height, 48
@@ -23,6 +24,7 @@ json.toilets do
     json.set! :happy, @happy_reviews[i]
     json.set! :unhappy, @unhappy_reviews[i]
     json.set! :isFavorite, @favorite_toilet_ids.include?(bounded_toilet.id)
+    json.set! :favoriteID, @favorite_toilet_ids.include?(bounded_toilet.id) ? Favorite.where(toilet_id: bounded_toilet.id).first.id : ''
     json.extract! bounded_toilet, :id, :address, :latitude, :longitude, :accessibility, :changing_station, :directions, :male, :female, :approved, :description
     json.set! :width, 48
     json.set! :height, 48
