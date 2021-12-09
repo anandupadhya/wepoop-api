@@ -1,8 +1,10 @@
 class Api::V1::ToiletsController < Api::V1::BaseController
   before_action :set_toilet, only: [:show]
   def index
-    @favorites = Favorite.where(user_id: current_user)
-    
+    favorites = Favorite.where(user_id: current_user.id)
+    @favorite_toilet_ids = []
+    favorites.each { |favorite| @favorite_toilet_ids << favorite.toilet_id }
+
     @toilets = Toilet.near([params["latitude"], params["longitude"]], 2)
     if @toilets.empty?
       @toilets = {}
