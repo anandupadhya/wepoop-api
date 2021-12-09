@@ -16,6 +16,7 @@ json.toilets do
     json.set! :happy, @happy_reviews[i]
     json.set! :unhappy, @unhappy_reviews[i]
     json.set! :isFavorite, @favorite_toilet_ids.include?(bounded_toilet.id)
+    json.set! :iconPath, @favorite_toilet_ids.include?(bounded_toilet.id) ? '/images/marker-favorite.png' : '/images/marker-normal.png'
     i += 1
     json.extract! bounded_toilet, :id, :address, :latitude, :longitude, :accessibility, :changing_station, :directions, :male, :female, :approved, :description
   end
